@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us - Montessori Academy Tools</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://cvmontessori.org/application/files/7015/9613/9960/feature-5.jpg') no-repeat center center;
+      background-size: cover;
+      height: 400px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      animation-delay: 0.5s;
+    }
+
+    /* Team Section */
+    .team-member img {
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border: 5px solid #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .team-member img:hover {
+      transform: scale(1.1);
+    }
+
+    .team-member h5 {
+      margin-top: 15px;
+      font-size: 1.25rem;
+    }
+
+    .team-member p {
+      color: #6c757d;
+    }
+
+    /* Values Section */
+    .values-section {
+      background-color: #ffffff;
+      padding: 50px 0;
+    }
+
+    .value-card {
+      border: none;
+      background: linear-gradient(145deg, #e6e6e6, #ffffff);
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 1);
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .value-card i {
+      font-size: 2rem;
+      color: #17a2b8;
+      margin-bottom: 15px;
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Testimonials Section */
+    .testimonial-carousel {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .testimonial-carousel:hover {
+      transform: scale(1.05);
+    }
+
+    .testimonial-carousel i {
+      font-size: 2rem;
+      color: #f39c12;
+      margin-bottom: 10px;
+    }
+
+    .carousel-indicators li {
+      background-color: #17a2b8;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+    }
+
+    .footer a {
+      color: white;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Button Styles */
+    .btn-custom {
+      background-color: #17a2b8;
+      color: white;
+      border-radius: 50px;
+      padding: 10px 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #138496;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero">
+  <h1 class="display-4 animate__animated animate__fadeInDown">About Montessori Academy Tools</h1>
+</div>
+
+<!-- Mission and Vision Section -->
+<div class="container text-center mt-5">
+  <h2 class="animate__animated animate__fadeInUp">Our Mission</h2>
+  <p class="lead animate__animated animate__fadeInUp">Empowering children with high-quality educational tools that foster creativity, critical thinking, and a love for learning.</p>
+
+  <h3 class="mt-4 animate__animated animate__fadeInUp">Our Vision</h3>
+  <p class="lead animate__animated animate__fadeInUp">A world where every child has access to innovative educational resources tailored to their unique learning styles.</p>
+</div>
+
+<!-- Values Section -->
+<div class="container values-section">
+  <h3 class="text-center mb-5 animate__animated animate__fadeInUp">Our Values</h3>
+  <div class="row text-center">
+    <div class="col-md-4 animate__animated animate__zoomIn">
+      <div class="value-card">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h4>Inclusivity</h4>
+        <p>Every child deserves the opportunity to learn and grow.</p>
+      </div>
+    </div>
+    <div class="col-md-4 animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
+      <div class="value-card">
+        <i class="fas fa-lightbulb"></i>
+        <h4>Innovation</h4>
+        <p>Continuous improvement through research and collaboration.</p>
+      </div>
+    </div>
+    <div class="col-md-4 animate__animated animate__zoomIn" style="animation-delay: 0.4s;">
+      <div class="value-card">
+        <i class="fas fa-award"></i>
+        <h4>Quality</h4>
+        <p>High standards in design and production.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Team Section -->
+<div class="container text-center mt-5">
+  <h3>Meet Our Team</h3>
+  <div class="row">
+    <div class="col-md-4 team-member">
+      <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/themes/2148436369/settings_images/253227b-2383-151d-cf3-a51e446cd061_Steve_Web.jpeg" alt="Samir Ayoub">
+      <h5>Samir Ayoub</h5>
+      <p>Founder & Educator</p>
+    </div>
+    <div class="col-md-4 team-member">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg" alt="Karim Hamzeh">
+      <h5>Karim Hamzeh</h5>
+      <p>Product Designer</p>
+    </div>
+    <div class="col-md-4 team-member">
+      <img src="https://i.cbc.ca/1.6770109.1678145708!/fileImage/httpImage/image.jpeg_gen/derivatives/16x9_780/dina-ibrahim-jpeg.jpeg" alt="Angela Khalil">
+      <h5>Angela Khalil</h5>
+      <p>Child Development Specialist</p>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section with Carousel -->
+<div class="container text-center mt-5">
+  <h3>Testimonials</h3>
+  <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#testimonialCarousel" data-slide-to="1"></li>
+      <li data-target="#testimonialCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="testimonial-carousel">
+          <i class="fas fa-quote-left"></i>
+          <p>"Montessori Academy Tools has transformed the way my child learns. It's fun, engaging, and educational!"</p>
+          <h5>- Lobna </h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="testimonial-carousel">
+          <i class="fas fa-quote-left"></i>
+          <p>"The Montessori method has been a game changer for my child's development. Highly recommend!"</p>
+          <h5>- Farah</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="testimonial-carousel">
+          <i class="fas fa-quote-left"></i>
+          <p>"As an educator, I appreciate the thoughtfulness and care behind each product."</p>
+          <h5>- Educator Samir</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer mt-5">
+  <div class="container text-center">
+    <p>&copy; 2024 Montessori Academy Tools | All Rights Reserved</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

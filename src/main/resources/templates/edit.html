@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Product</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+        /* Full-Screen Background Image with Blur Effect */
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay for the background */
+        }
+
+        /* Pseudo-element for blurred background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://xihamontessori.com/wp-content/uploads/2024/03/montessori-bead-chain-lesson-for-math-in-elementary-school-classroom.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px); /* Blurs the background image */
+            z-index: -1; /* Places the background behind the content */
+        }
+
+        /* Centered Content Container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* White background with opacity */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            position: relative; /* To ensure z-index is effective */
+            z-index: 1; /* Ensures the content is above the blurred background */
+            animation: fadeIn 1s ease-in-out; /* Animation for smooth appearance */
+        }
+
+        /* Form Input Styling */
+        .form-control {
+            border-radius: 20px;
+            padding: 15px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
+            border-color: #007bff;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background-color: #007bff;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        /* Add animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Error Alert Styling */
+        .alert {
+            animation: fadeIn 1s ease-in-out;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Title Styling */
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Label Styling */
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h2><i class="fas fa-edit"></i> Edit Product</h2>
+
+  <form th:action="@{/product/{id}/update(id=${product.id})}" th:object="${product}" method="post" class="form-group">
+    <label for="name"><i class="fas fa-tag"></i> Name:</label>
+    <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter product name" required />
+
+    <label for="price"><i class="fas fa-dollar-sign"></i> Price:</label>
+    <input type="number" step="0.01" id="price" th:field="*{price}" class="form-control" placeholder="Enter product price" required />
+
+    <label for="quantity"><i class="fas fa-layer-group"></i> Quantity:</label>
+    <input type="number" id="quantity" th:field="*{quantity}" class="form-control" placeholder="Enter product quantity" required />
+
+    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update Product</button>
+  </form>
+
+  <!-- Success and Error Alerts -->
+  <div th:if="${success}" class="alert alert-success mt-3">
+    <p th:text="${success}"></p>
+  </div>
+  <div th:if="${error}" class="alert alert-danger mt-3">
+    <p th:text="${error}"></p>
+  </div>
+
+  <!-- Back to Products List Button -->
+  <a href="/product" class="btn btn-secondary mt-3"><i class="fas fa-arrow-left"></i> Back to Products List</a>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

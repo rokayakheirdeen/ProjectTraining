@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Feedback</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Full screen background */
+    body {
+      background: url('https://xihamontessori.com/wp-content/uploads/2024/03/montessori-bead-chain-lesson-for-math-in-elementary-school-classroom.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Container for the feedback form */
+    .feedback-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 600px;
+      animation: fadeIn 1s ease-in-out;
+      opacity: 0.95;
+    }
+
+    /* Add custom animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Custom button styling */
+    .btn {
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Custom icon styling for header */
+    .feedback-header i {
+      color: #007bff;
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="feedback-container">
+  <h1 class="my-4 feedback-header text-center">
+    <i class="fas fa-comments"></i> Submit Your Feedback
+  </h1>
+
+  <form th:action="@{/feedback/submit}" th:object="${feedback}" method="post">
+    <div class="form-group">
+      <label for="content">Your Feedback</label>
+      <textarea id="content" th:field="*{content}" class="form-control" rows="4" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating (1 to 5)</label>
+      <input type="number" id="rating" th:field="*{rating}" class="form-control" min="1" max="5" required>
+    </div>
+
+    <!-- User ID could be fetched from session -->
+    <input type="hidden" name="userId" value="1" /> <!-- Example user ID, replace with actual session-based user -->
+
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+  </form>
+
+  <a class="btn btn-secondary mt-2" href="/feedback">
+    <i class="fas fa-arrow-left"></i> Back to Feedback List
+  </a>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

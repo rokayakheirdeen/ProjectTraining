@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Detail</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Custom CSS -->
+  <style>
+        body {
+            background: url('https://xihamontessori.com/wp-content/uploads/2024/03/montessori-bead-chain-lesson-for-math-in-elementary-school-classroom.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(8px);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            max-width: 500px;
+            width: 100%;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        .card-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .icon {
+            margin-right: 10px;
+        }
+        .btn-back {
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            transform: scale(1.1);
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+  <div class="card-header">
+    <i class="fas fa-info-circle icon"></i> Product Details
+  </div>
+  <div class="card-body">
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><i class="fas fa-box icon"></i> Name: <span th:text="${product.name}"></span></li>
+      <li class="list-group-item"><i class="fas fa-dollar-sign icon"></i> Price: <span th:text="${product.price}"></span></li>
+      <li class="list-group-item"><i class="fas fa-cubes icon"></i> Quantity: <span th:text="${product.quantity}"></span></li>
+    </ul>
+  </div>
+  <div class="card-footer text-center">
+    <a href="/product" class="btn btn-secondary btn-back"><i class="fas fa-arrow-left"></i> Back to List</a>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

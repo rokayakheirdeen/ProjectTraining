@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Custom CSS for advanced styling -->
+    <style>
+        /* Full background image with blur effect */
+        body {
+            background: url('https://xihamontessori.com/wp-content/uploads/2024/03/montessori-bead-chain-lesson-for-math-in-elementary-school-classroom.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(8px);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Card container for the table */
+        .card-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 90%;
+            width: 1000px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Table styling */
+        .table {
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .table th {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        /* Hover effect for rows */
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        /* Floating add product button */
+        .add-product-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .add-product-btn:hover {
+            background-color: #218838;
+        }
+
+        .add-product-btn i {
+            font-size: 24px;
+        }
+
+        /* Smooth hover effects for buttons */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <h1 class="mb-4 text-center font-bold text-2xl">Product List</h1>
+
+    <!-- Success and Error Messages -->
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+    <!-- Product Table -->
+    <div class="table-responsive">
+        <table class="table table-hover table-striped table-bordered shadow-sm">
+            <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}" class="font-medium"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td>
+                    <a th:href="@{/product/{id}(id=${product.id})}" class="btn btn-info btn-sm mx-1">
+                        <i class="fas fa-eye"></i> View
+                    </a>
+                    <a th:href="@{/product/{id}/edit(id=${product.id})}" class="btn btn-warning btn-sm mx-1">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <form th:action="@{/product/{id}/delete(id=${product.id})}" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm mx-1">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </form>
+                    <!-- Add to Favorites Button -->
+                    <form th:action="@{/favorites/add}" method="post" class="d-inline">
+                        <input type="hidden" name="productId" th:value="${product.id}" />
+                        <input type="hidden" name="userId" th:value="${userId}" />
+                        <button type="submit" class="btn btn-primary btn-sm mx-1">
+                            <i class="fas fa-heart"></i> Add to Favorites
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add New Product Floating Button -->
+<a href="/product/create" class="add-product-btn">
+    <i class="fas fa-plus"></i>
+</a>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- FontAwesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

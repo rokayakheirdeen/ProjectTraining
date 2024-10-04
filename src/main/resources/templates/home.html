@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Montessori Academy Tools - Home</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Enhanced Hero Section */
+    .hero-image {
+        background-image: url('https://cvmontessori.org/application/files/7015/9613/9960/feature-5.jpg');
+        height: 70vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        animation: fadeIn 1.5s;
+    }
+    .hero-text {
+        text-align: center;
+        animation: slideIn 2s ease-in-out;
+    }
+    .btn-lg {
+        border-radius: 30px;
+        padding: 15px 30px;
+        transition: transform 0.3s, background-color 0.3s;
+    }
+    .btn-lg:hover {
+        transform: scale(1.1);
+        background-color: #ffc107;
+        color: #007bff;
+    }
+    /* Animation for Call-to-Action */
+    .call-to-action {
+        border: 2px solid #007bff;
+        border-radius: 15px;
+        transition: box-shadow 0.3s, transform 0.3s;
+        background-color: #f9f9f9;
+    }
+    .call-to-action:hover {
+        box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+        transform: translateY(-8px);
+    }
+    /* Keyframes for Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideIn {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+  <a class="navbar-brand text-blue-600 font-bold" href="/">Montessori Academy Tools</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link text-blue-500" th:href="@{/login}">Login</a></li>
+      <li class="nav-item"><a class="nav-link text-blue-500" th:href="@{/register}">Register</a></li>
+      <li class="nav-item"><a class="nav-link text-blue-500" th:href="@{/product}">Products</a></li>
+      <li class="nav-item"><a class="nav-link text-blue-500" th:href="@{/orders}">Orders</a></li>
+      <li class="nav-item"><a class="nav-link text-blue-500" th:href="@{/about}">About Us</a></li>
+      <li class="nav-item"><a class="nav-link text-blue-500" th:href="@{/feedback/new}">Feedback</a></li> <!-- New Feedback button -->
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero-image">
+  <div class="hero-text">
+    <h1 class="font-bold text-4xl">Explore Montessori Academy Tools</h1>
+    <p class="text-xl mt-3">Helping children with special needs learn through interactive tools</p>
+    <a href="/product" class="btn btn-primary btn-lg mt-4">Shop Now <i class="fas fa-shopping-cart"></i></a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <div class="row">
+    <!-- Product Section -->
+    <div class="col-md-3 text-center">
+      <div class="call-to-action p-4 hover:shadow-lg">
+        <i class="fas fa-box text-blue-500 text-3xl mb-3"></i>
+        <h3 class="font-bold">Products</h3>
+        <p>Browse our educational tools and add them to your cart.</p>
+        <a href="/product" class="btn btn-outline-primary hover:bg-blue-500 hover:text-white transition duration-300">View Products</a>
+      </div>
+    </div>
+    <!-- Orders Section -->
+    <div class="col-md-3 text-center">
+      <div class="call-to-action p-4 hover:shadow-lg">
+        <i class="fas fa-receipt text-blue-500 text-3xl mb-3"></i>
+        <h3 class="font-bold">Orders</h3>
+        <p>Track your current and past orders with real-time updates.</p>
+        <a href="/orders" class="btn btn-outline-primary hover:bg-blue-500 hover:text-white transition duration-300">View Orders</a>
+      </div>
+    </div>
+    <!-- Feedback Section -->
+    <div class="col-md-3 text-center">
+      <div class="call-to-action p-4 hover:shadow-lg">
+        <i class="fas fa-comments text-blue-500 text-3xl mb-3"></i>
+        <h3 class="font-bold">Feedback</h3>
+        <p>Share your thoughts and suggestions!</p>
+        <a href="/feedback/new" class="btn btn-outline-primary hover:bg-blue-500 hover:text-white transition duration-300">Give Feedback</a>
+      </div>
+    </div>
+    <!-- About Us Section -->
+    <div class="col-md-3 text-center">
+      <div class="call-to-action p-4 hover:shadow-lg">
+        <i class="fas fa-info-circle text-blue-500 text-3xl mb-3"></i>
+        <h3 class="font-bold">About Us</h3>
+        <p>Learn more about our mission and our dedication to helping children.</p>
+        <a href="/about" class="btn btn-outline-primary hover:bg-blue-500 hover:text-white transition duration-300">About Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-200 text-center py-4 mt-5">
+  <p class="text-gray-700">&copy; 2024 Montessori Academy Tools. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

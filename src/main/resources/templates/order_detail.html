@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Detail</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Full screen background */
+    body {
+      background: url('https://xihamontessori.com/wp-content/uploads/2024/03/montessori-bead-chain-lesson-for-math-in-elementary-school-classroom.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Container styles */
+    .container {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 50px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Order card styling */
+    .order-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .order-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Table styles */
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 20px;
+    }
+
+    thead th {
+      background-color: rgba(0, 123, 255, 0.8);
+      color: white;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    tbody td {
+      vertical-align: middle;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .icon {
+      margin-right: 8px;
+      color: #007bff;
+    }
+
+    /* Back button animation */
+    .btn-primary {
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+
+  <h1 class="mb-4"><i class="fas fa-receipt icon"></i>Order Detail</h1>
+
+  <!-- Order Information -->
+  <div class="card order-card">
+    <div class="card-header">
+      <h4 class="card-title">
+        <i class="fas fa-file-invoice icon"></i>Order #<span th:text="${order.id}"></span>
+      </h4>
+    </div>
+    <div class="card-body">
+      <p><strong><i class="fas fa-info-circle icon"></i>Status:</strong> <span th:text="${order.status}"></span></p>
+      <p><strong><i class="fas fa-dollar-sign icon"></i>Total Price:</strong> $<span th:text="${order.totalPrice}"></span></p>
+      <p><strong><i class="fas fa-user icon"></i>User:</strong> <span th:text="${order.user.username}"></span></p>
+    </div>
+  </div>
+
+  <!-- Products Table -->
+  <div class="card order-card">
+    <div class="card-header">
+      <h4 class="card-title"><i class="fas fa-box icon"></i>Products in Order</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th><i class="fas fa-box-open icon"></i>Product Name</th>
+          <th><i class="fas fa-dollar-sign icon"></i>Price</th>
+          <th><i class="fas fa-sort-amount-up icon"></i>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${order.products}">
+          <td th:text="${product.name}"></td>
+          <td>$<span th:text="${product.price}"></span></td>
+          <td th:text="${product.quantity}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="/orders" class="btn btn-primary mt-3"><i class="fas fa-arrow-left icon"></i>Back to Orders List</a>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
